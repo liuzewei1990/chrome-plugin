@@ -1,0 +1,54 @@
+{
+    "manifest_version": 2,
+    "name": "一个测试插件",
+    "version": "1.0.0",
+    "description": "插件实验",
+    "icons": {
+        "16": "src/images/icon.png",
+        "48": "src/images/icon.png",
+        "128": "src/images/icon.png"
+    },
+    "browser_action": {},
+    "background": {
+        "scripts": [
+            "src/js/background.js"
+        ]
+    },
+    "permissions": [
+        "notifications",
+        "contextMenus",
+        "tabs"
+    ],
+    "commands": {
+        "COPY_INFO": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+5"
+            },
+            "description": "一键复制商户信息"
+        },
+        "POST_INFO": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+6"
+            },
+            "description": "一键填充商户信息"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/js/jquery-1.8.3.js",
+                "src/js/content-script.js"
+            ],
+            "css": [
+                "src/css/custom.css"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        "src/js/inject.js"
+    ]
+}
